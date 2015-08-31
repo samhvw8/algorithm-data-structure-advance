@@ -25,6 +25,15 @@ void drop_phone_book(phone_book *book){
      }
 
      if(book -> entries != NULL){
+
+          phone_entry * to_free = book->entries;
+          int idx = 0;
+          while(idx < book->total){
+               free(to_free->name);
+               free(to_free->tel);
+               idx++;
+               to_free++;
+          }
           free(book->entries);
           book->entries == NULL;
      }
@@ -53,8 +62,16 @@ void add_phone_number(char *name, char *tel, phone_book *book){
      }
 
      phone_entry * add = book -> entries;
-     (add[book->total]).name = name;
-     (add[book->total]).tel = tel;
+     // Add entry
+     (add[book->total]).name = (char *)malloc(strlen(name) + 1);
+     (add[book->total]).tel = (char *)malloc(strlen(tel) + 1);
+     if((add[book->total]).name == NULL || (add[book->total]).tel == NULL){
+          fprintf(stderr, "Allocated failed in %s:%d\n", __FILE__, __LINE__);
+          exit(1);
+     }
+     strcpy((add[book->total]).name, name);
+     strcpy((add[book->total]).tel, tel);
+
      (book->total)++;
 
 }
