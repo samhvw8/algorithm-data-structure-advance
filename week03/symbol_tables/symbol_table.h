@@ -14,13 +14,13 @@ typedef struct _symbol_table {
 #define INITAL_SIZE 100
 #define INCREMENTAL_SIZE 10
 
-symbol_table create_symble_table(entry (*make_node)(void *, void*),
+symbol_table create_symbol_table(entry (*make_node)(void *, void*),
                                  int(*compare)(void*, void*));
 
-void drop_symbol_table(symble_table *tab);
+void drop_symbol_table(symbol_table *tab);
 
-void add_entry(void *key, void *value, symble_table *book);
+void add_entry(void *key, void *value, symbol_table *book);
 
-entry * get_entry(void *key, symble_table book);
+entry * get_entry(void *key, symbol_table book);
 
 
