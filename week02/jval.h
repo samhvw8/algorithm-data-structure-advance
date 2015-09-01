@@ -27,29 +27,30 @@ typedef union _jval {
   char c;
 } jval;
 
-jval new_jval_int(int val);
+extern jval new_jval_int(int val);
 
-jval new_jval_float(float val);
+extern jval new_jval_float(float val);
 
-jval new_jval_double(double val);
+extern jval new_jval_double(double val);
 
-jval new_jval_string(char* val);
+extern jval new_jval_string(char* val);
 
-jval new_jval_void(void* val, size_t size);
+extern jval new_jval_void(void* val, size_t size);
 
-jval new_jval_long(long val);
+extern jval new_jval_long(long val);
 
-jval new_jval_char(char val);
+extern jval new_jval_char(char val);
 
-void exch(jval *a, jval *b);
+extern void exch(jval *a, jval *b);
 
-void sort_gen(jval *arr, int l, int r, int (*compare)(jval *, jval *));
+extern void sort_gen(jval *arr, int l, int r, int (*compare)(jval *, jval *));
 
-void sort_gen_int(jval *arr, int l, int r);
+extern void sort_gen_int(jval *arr, int l, int r);
 
-int search_gen(jval *arr, int l, int r, jval val,int (*compare)(jval *, jval *));
+extern int search_gen(jval *arr, int l, int r, jval val,int (*compare)(jval *, jval *));
 
-int search_gen_int(jval *arr, int l, int r, jval val);
+extern int search_gen_int(jval *arr, int l, int r, jval val);
 
-int compare_int(jval *a, jval *b);
+extern int compare_int(jval *a, jval *b);
+
 #endif
