@@ -44,11 +44,12 @@ void drop_symbol_table(symbol_table *tab){
 }
 
 void add_entry(void *key, void *value, symbol_table *book){
-     if(key == NULL || book == NULL){
+  if(key == NULL || book == NULL){
           fprintf(stderr, "Error NULL in %s:%d \n", __FILE__, __LINE__);
           exit(1);
      }
-
+  if(get_entry(key, *book) != NULL)
+    return;
      if(book -> entries == NULL){
           fprintf(stderr, "Error NULL in %s:%d \n", __FILE__, __LINE__);
           exit(1);

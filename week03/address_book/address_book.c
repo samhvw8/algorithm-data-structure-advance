@@ -35,10 +35,13 @@ void drop_phone_book(phone_book *book){
 /* add an entry in the phone book
    NB: if the entry exists, the value should be overwritten */
 void add_phone_number(char *name, char *tel, phone_book *book){
+  
      if(name == NULL || book == NULL){
           fprintf(stderr, "Error NULL in %s:%d \n", __FILE__, __LINE__);
           exit(1);
      }
+     if(find_person_phone_book(name, *book) != NULL) 
+       return;
 
      if(book -> entries == NULL){
           fprintf(stderr, "Error NULL in %s:%d \n", __FILE__, __LINE__);

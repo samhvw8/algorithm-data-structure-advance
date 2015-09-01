@@ -31,7 +31,7 @@ int main(){
 
      phone_entry *find = find_person_phone_book(name_str, book);
      if(find == NULL){
-          printf("Not found %s !!", name_str);
+          printf("Not found %s !!\n", name_str);
      } else {
           printf("%s - %s \n", find->name, find->tel);
      }
@@ -76,10 +76,10 @@ void print_addrr_book(phone_book book){
      int i;
 
      printf("\n\n");
-     printf("%-25s %-13s\n", "Name", "Tel");
+     printf("STT %-25s\n", "Name");
      for(i = 0; i < book.total; i++){
-          printf("%-25s %-13s\n", arr -> name, arr -> tel);
-          arr++;
+       printf("%-3d %-25s\n", i + 1, arr -> name);
+       arr++;
      }
      printf("\n\n");
 }
