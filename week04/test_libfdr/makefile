@@ -7,7 +7,7 @@ LIB = ../libfdr
 LFLAGS = -lfdr
 SRCS=test_lib.c
 OBJS=$(SRCS:.c=.o)
-EXECUTABLE=test_symbol_tables
+EXECUTABLE=test_lib
 another= gmon.out
 
 all: $(SRCS) $(EXECUTABLE)
