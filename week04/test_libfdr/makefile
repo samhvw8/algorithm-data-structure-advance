@@ -5,7 +5,7 @@ LDFLAGS= $(FLAGS)
 INC = ../libfdr
 LIB = ../libfdr
 LFLAGS = -lfdr
-SRCS=test_symbol_tables.c
+SRCS=test_lib.c
 OBJS=$(SRCS:.c=.o)
 EXECUTABLE=test_symbol_tables
 another= gmon.out
