@@ -9,8 +9,6 @@ typedef struct _person{
      char *tel;
 } person;
 
-int compar(void * a, void *b);
-
 person * get_data_from_file(FILE *fp, int size);
 
 void add_to_tree(JRB *t, person *arr, int size);
@@ -57,11 +55,6 @@ int main(){
      } else {
           printf("%s - %s \n", find->key.s, find->val.s);
      }
-
-
-
-
-
 
 
      // free
@@ -128,8 +121,4 @@ person * get_data_from_file(FILE *fp, int size){
      }
 
      return ret;
-}
-
-int compar(void * a, void *b){
-     return strcmp((char *)a, (char *)b);
 }
