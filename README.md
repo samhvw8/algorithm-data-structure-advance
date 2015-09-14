@@ -10,4 +10,7 @@ Build Quick sort 3 way generic and apply it to Sort Address book and compare wit
 Build & test generic type (jval) and function for it
 ## Week 03
 ### At class & at home
-Build Symbol Tables for address book and Symbol Tables generic 
+Build Symbol Tables for address book and Symbol Tables generic
+## Week 04
+
+Use Libfdr in Phone book
