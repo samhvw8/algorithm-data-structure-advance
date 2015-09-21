@@ -37,7 +37,7 @@ int checkan(char arr[],int length){
     return 1;
 }
 // Menu 
-int getmenu(const char *a,int o,int EXIT){
+int get_menu(const char *a,int o,int EXIT){
     /**
      * Require checkan ,count2da,repchar  function
      * o is number of option

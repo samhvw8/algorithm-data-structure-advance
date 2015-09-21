@@ -1,7 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <jrb.h>
+#include <libfdr/jrb.h>
+#include <utility.h>
 #define CSV "data.csv"
 
 typedef struct _person{
@@ -35,57 +36,56 @@ int main(){
 
      free(arr);
 
+     for(;;){
+          switch(get_menu("Display all;Find and rename if found", 2, 1)) {
 
-     // test traverse and check add to tree
-     jrb_traverse(tmp, t){
-          char *name = tmp->key.s;
-          char *tel = (char *)tmp->val.v;
-          printf("%-s %-s\n", name, tel);
+          case 1:
+               // test traverse and check add to tree
+               jrb_traverse(tmp, t){
+                    char *name = tmp->key.s;
+                    char *tel = (char *)tmp->val.v;
+                    printf("\t%-s %-s\n", name, tel);
+               }
+               break;
+          case 2:
+          {
+               char name[40];
+               printf("\n\t\t> Person name : ");
+               scanf("%[^\n]", name);
+
+               JRB find = jrb_find_str(t, name);
+               if(find == NULL){
+                    printf("\t\t\tCan't found %s !!\n", name);
+               } else {
+                    printf("\t\t%s - %s \n", find->key.s, find->val.s);
+                    // test change value
+                    printf("\tChange value %s --> ", find->val.s);
+                    char *new_val;
+                    char temp[100];
+                    scanf(" %[^\n]", temp);mfflush();
+                    new_val = (char *)malloc(strlen(temp) + 1);
+                    if(new_val == NULL){
+                         fprintf(stderr, "\t\tError allocate in %s:%d\n", __FILE__, __LINE__);
+                         exit(1);
+                    }
+
+                    strcpy(new_val, temp);
+                    free(find->val.v);
+                    find->val = new_jval_s(new_val);
+               }
+          }  break;
+          case 0:
+               goto end;
+          }
      }
 
-     // test find
-
-     char name[40];
-     printf("\n\n\nPerson name : ");
-     scanf("%[^\n]", name);
-
-     JRB find = jrb_find_str(t, name);
-     if(find == NULL){
-          printf("can't found %s !!\n", name);
-     } else {
-          printf("%s - %s \n", find->key.s, find->val.s);
-          // test change value
-          printf("Change value %s --> ", find->val.s);
-          char *new_val;
-          char temp[100];
-          scanf(" %[^\n]", temp);
-          new_val = (char *)malloc(strlen(temp) + 1);
-          if(new_val == NULL){
-               fprintf(stderr, "Error allocate in %s:%d\n", __FILE__, __LINE__);
-               exit(1);
-          }
-
-          strcpy(new_val, temp);
-          free(find->val.v);
-          find->val = new_jval_s(new_val);
-
-
-          // test change result
-          jrb_traverse(tmp, t){
-               char *name = tmp->key.s;
-               char *tel = (char *)tmp->val.v;
-               printf("%-s %-s\n", name, tel);
-          }
-     }
-
+end:
 
      // free
      jrb_traverse(tmp, t){
           free(tmp->key.s);
           free(tmp->val.v);
      }
-
-
 
      jrb_free_tree(t);
 
