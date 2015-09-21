@@ -54,6 +54,28 @@ int main(){
           printf("can't found %s !!\n", name);
      } else {
           printf("%s - %s \n", find->key.s, find->val.s);
+          // test change value
+          printf("Change value %s --> ", find->val.s);
+          char *new_val;
+          char temp[100];
+          scanf(" %[^\n]", temp);
+          new_val = (char *)malloc(strlen(temp) + 1);
+          if(new_val == NULL){
+               fprintf(stderr, "Error allocate in %s:%d\n", __FILE__, __LINE__);
+               exit(1);
+          }
+
+          strcpy(new_val, temp);
+          free(find->val.v);
+          find->val = new_jval_s(new_val);
+
+
+          // test change result
+          jrb_traverse(tmp, t){
+               char *name = tmp->key.s;
+               char *tel = (char *)tmp->val.v;
+               printf("%-s %-s\n", name, tel);
+          }
      }
 
 
@@ -80,7 +102,7 @@ void add_to_tree(JRB *t, person *arr, int size){
      int i;
 
      for(i = 0; i < size; i++){
-          jrb_insert_str(*t, arr[i].name, new_jval_v((void *) arr[i].tel));
+          jrb_insert_str(*t, arr[i].name, new_jval_s(arr[i].tel));
      }
 
 }
