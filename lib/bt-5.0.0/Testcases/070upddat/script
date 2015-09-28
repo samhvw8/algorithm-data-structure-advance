@@ -1,0 +1,19 @@
+echo on
+create test_db
+execute ../defdata.bt
+buffer data ../defdata.bt
+define-data key1 *data
+define-data key2 *data
+define-data key3 *data
+find
+list-data
+find-data key1 d
+find-data key2 d
+find-data key3 d
+update-data aaaa0001 *data
+update-data aaaa0050 *data
+update-data aaaa0099 *data
+find-data aaaa0001 d
+find-data aaaa0050 d
+find-data aaaa0099 d
+quit

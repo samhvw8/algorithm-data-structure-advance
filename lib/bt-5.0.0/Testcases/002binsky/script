@@ -1,0 +1,16 @@
+echo on
+create test_db
+execute ../inskeysrand.bt
+find
+list
+# try and define the same keys again - this should produce an error
+# message for each key
+execute ../inskeysrand.bt
+close
+# now with a non-zero write threshold
+create test_db
+write-threshold 10
+execute ../inskeysrand.bt
+find
+list
+quit

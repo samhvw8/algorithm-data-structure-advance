@@ -1,0 +1,24 @@
+# Testing duplicate keys and shared mode
+create test_db 
+close
+open test_db s
+dups on
+execute ../inskeysrand.bt
+execute ../inskeysrand.bt
+echo on
+position s
+list c
+lock
+position s
+list c
+position e
+list-prev c
+find @Eiz000130
+next
+remove-cur
+position s
+list c
+unlock
+position e
+list-prev c
+quit

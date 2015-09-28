@@ -1,0 +1,207 @@
+bt: create test_db
+bt: execute ../defdata.bt
+bt: # Define 100 keys and associated data in open bt file
+bt: #
+bt: dd aaaa0000 aaaa0000
+bt: dd aaaa0001 aaaa0001
+bt: dd aaaa0002 aaaa0002
+bt: dd aaaa0003 aaaa0003
+bt: dd aaaa0004 aaaa0004
+bt: dd aaaa0005 aaaa0005
+bt: dd aaaa0006 aaaa0006
+bt: dd aaaa0007 aaaa0007
+bt: dd aaaa0008 aaaa0008
+bt: dd aaaa0009 aaaa0009
+bt: dd aaaa0010 aaaa0010
+bt: dd aaaa0011 aaaa0011
+bt: dd aaaa0012 aaaa0012
+bt: dd aaaa0013 aaaa0013
+bt: dd aaaa0014 aaaa0014
+bt: dd aaaa0015 aaaa0015
+bt: dd aaaa0016 aaaa0016
+bt: dd aaaa0017 aaaa0017
+bt: dd aaaa0018 aaaa0018
+bt: dd aaaa0019 aaaa0019
+bt: dd aaaa0020 aaaa0020
+bt: dd aaaa0021 aaaa0021
+bt: dd aaaa0022 aaaa0022
+bt: dd aaaa0023 aaaa0023
+bt: dd aaaa0024 aaaa0024
+bt: dd aaaa0025 aaaa0025
+bt: dd aaaa0026 aaaa0026
+bt: dd aaaa0027 aaaa0027
+bt: dd aaaa0028 aaaa0028
+bt: dd aaaa0029 aaaa0029
+bt: dd aaaa0030 aaaa0030
+bt: dd aaaa0031 aaaa0031
+bt: dd aaaa0032 aaaa0032
+bt: dd aaaa0033 aaaa0033
+bt: dd aaaa0034 aaaa0034
+bt: dd aaaa0035 aaaa0035
+bt: dd aaaa0036 aaaa0036
+bt: dd aaaa0037 aaaa0037
+bt: dd aaaa0038 aaaa0038
+bt: dd aaaa0039 aaaa0039
+bt: dd aaaa0040 aaaa0040
+bt: dd aaaa0041 aaaa0041
+bt: dd aaaa0042 aaaa0042
+bt: dd aaaa0043 aaaa0043
+bt: dd aaaa0044 aaaa0044
+bt: dd aaaa0045 aaaa0045
+bt: dd aaaa0046 aaaa0046
+bt: dd aaaa0047 aaaa0047
+bt: dd aaaa0048 aaaa0048
+bt: dd aaaa0049 aaaa0049
+bt: dd aaaa0050 aaaa0050
+bt: dd aaaa0051 aaaa0051
+bt: dd aaaa0052 aaaa0052
+bt: dd aaaa0053 aaaa0053
+bt: dd aaaa0054 aaaa0054
+bt: dd aaaa0055 aaaa0055
+bt: dd aaaa0056 aaaa0056
+bt: dd aaaa0057 aaaa0057
+bt: dd aaaa0058 aaaa0058
+bt: dd aaaa0059 aaaa0059
+bt: dd aaaa0060 aaaa0060
+bt: dd aaaa0061 aaaa0061
+bt: dd aaaa0062 aaaa0062
+bt: dd aaaa0063 aaaa0063
+bt: dd aaaa0064 aaaa0064
+bt: dd aaaa0065 aaaa0065
+bt: dd aaaa0066 aaaa0066
+bt: dd aaaa0067 aaaa0067
+bt: dd aaaa0068 aaaa0068
+bt: dd aaaa0069 aaaa0069
+bt: dd aaaa0070 aaaa0070
+bt: dd aaaa0071 aaaa0071
+bt: dd aaaa0072 aaaa0072
+bt: dd aaaa0073 aaaa0073
+bt: dd aaaa0074 aaaa0074
+bt: dd aaaa0075 aaaa0075
+bt: dd aaaa0076 aaaa0076
+bt: dd aaaa0077 aaaa0077
+bt: dd aaaa0078 aaaa0078
+bt: dd aaaa0079 aaaa0079
+bt: dd aaaa0080 aaaa0080
+bt: dd aaaa0081 aaaa0081
+bt: dd aaaa0082 aaaa0082
+bt: dd aaaa0083 aaaa0083
+bt: dd aaaa0084 aaaa0084
+bt: dd aaaa0085 aaaa0085
+bt: dd aaaa0086 aaaa0086
+bt: dd aaaa0087 aaaa0087
+bt: dd aaaa0088 aaaa0088
+bt: dd aaaa0089 aaaa0089
+bt: dd aaaa0090 aaaa0090
+bt: dd aaaa0091 aaaa0091
+bt: dd aaaa0092 aaaa0092
+bt: dd aaaa0093 aaaa0093
+bt: dd aaaa0094 aaaa0094
+bt: dd aaaa0095 aaaa0095
+bt: dd aaaa0096 aaaa0096
+bt: dd aaaa0097 aaaa0097
+bt: dd aaaa0098 aaaa0098
+bt: dd aaaa0099 aaaa0099
+bt: find
+bt: list-data
+Key: 'aaaa0000' - Data: 'aaaa0000'
+Key: 'aaaa0001' - Data: 'aaaa0001'
+Key: 'aaaa0002' - Data: 'aaaa0002'
+Key: 'aaaa0003' - Data: 'aaaa0003'
+Key: 'aaaa0004' - Data: 'aaaa0004'
+Key: 'aaaa0005' - Data: 'aaaa0005'
+Key: 'aaaa0006' - Data: 'aaaa0006'
+Key: 'aaaa0007' - Data: 'aaaa0007'
+Key: 'aaaa0008' - Data: 'aaaa0008'
+Key: 'aaaa0009' - Data: 'aaaa0009'
+Key: 'aaaa0010' - Data: 'aaaa0010'
+Key: 'aaaa0011' - Data: 'aaaa0011'
+Key: 'aaaa0012' - Data: 'aaaa0012'
+Key: 'aaaa0013' - Data: 'aaaa0013'
+Key: 'aaaa0014' - Data: 'aaaa0014'
+Key: 'aaaa0015' - Data: 'aaaa0015'
+Key: 'aaaa0016' - Data: 'aaaa0016'
+Key: 'aaaa0017' - Data: 'aaaa0017'
+Key: 'aaaa0018' - Data: 'aaaa0018'
+Key: 'aaaa0019' - Data: 'aaaa0019'
+Key: 'aaaa0020' - Data: 'aaaa0020'
+Key: 'aaaa0021' - Data: 'aaaa0021'
+Key: 'aaaa0022' - Data: 'aaaa0022'
+Key: 'aaaa0023' - Data: 'aaaa0023'
+Key: 'aaaa0024' - Data: 'aaaa0024'
+Key: 'aaaa0025' - Data: 'aaaa0025'
+Key: 'aaaa0026' - Data: 'aaaa0026'
+Key: 'aaaa0027' - Data: 'aaaa0027'
+Key: 'aaaa0028' - Data: 'aaaa0028'
+Key: 'aaaa0029' - Data: 'aaaa0029'
+Key: 'aaaa0030' - Data: 'aaaa0030'
+Key: 'aaaa0031' - Data: 'aaaa0031'
+Key: 'aaaa0032' - Data: 'aaaa0032'
+Key: 'aaaa0033' - Data: 'aaaa0033'
+Key: 'aaaa0034' - Data: 'aaaa0034'
+Key: 'aaaa0035' - Data: 'aaaa0035'
+Key: 'aaaa0036' - Data: 'aaaa0036'
+Key: 'aaaa0037' - Data: 'aaaa0037'
+Key: 'aaaa0038' - Data: 'aaaa0038'
+Key: 'aaaa0039' - Data: 'aaaa0039'
+Key: 'aaaa0040' - Data: 'aaaa0040'
+Key: 'aaaa0041' - Data: 'aaaa0041'
+Key: 'aaaa0042' - Data: 'aaaa0042'
+Key: 'aaaa0043' - Data: 'aaaa0043'
+Key: 'aaaa0044' - Data: 'aaaa0044'
+Key: 'aaaa0045' - Data: 'aaaa0045'
+Key: 'aaaa0046' - Data: 'aaaa0046'
+Key: 'aaaa0047' - Data: 'aaaa0047'
+Key: 'aaaa0048' - Data: 'aaaa0048'
+Key: 'aaaa0049' - Data: 'aaaa0049'
+Key: 'aaaa0050' - Data: 'aaaa0050'
+Key: 'aaaa0051' - Data: 'aaaa0051'
+Key: 'aaaa0052' - Data: 'aaaa0052'
+Key: 'aaaa0053' - Data: 'aaaa0053'
+Key: 'aaaa0054' - Data: 'aaaa0054'
+Key: 'aaaa0055' - Data: 'aaaa0055'
+Key: 'aaaa0056' - Data: 'aaaa0056'
+Key: 'aaaa0057' - Data: 'aaaa0057'
+Key: 'aaaa0058' - Data: 'aaaa0058'
+Key: 'aaaa0059' - Data: 'aaaa0059'
+Key: 'aaaa0060' - Data: 'aaaa0060'
+Key: 'aaaa0061' - Data: 'aaaa0061'
+Key: 'aaaa0062' - Data: 'aaaa0062'
+Key: 'aaaa0063' - Data: 'aaaa0063'
+Key: 'aaaa0064' - Data: 'aaaa0064'
+Key: 'aaaa0065' - Data: 'aaaa0065'
+Key: 'aaaa0066' - Data: 'aaaa0066'
+Key: 'aaaa0067' - Data: 'aaaa0067'
+Key: 'aaaa0068' - Data: 'aaaa0068'
+Key: 'aaaa0069' - Data: 'aaaa0069'
+Key: 'aaaa0070' - Data: 'aaaa0070'
+Key: 'aaaa0071' - Data: 'aaaa0071'
+Key: 'aaaa0072' - Data: 'aaaa0072'
+Key: 'aaaa0073' - Data: 'aaaa0073'
+Key: 'aaaa0074' - Data: 'aaaa0074'
+Key: 'aaaa0075' - Data: 'aaaa0075'
+Key: 'aaaa0076' - Data: 'aaaa0076'
+Key: 'aaaa0077' - Data: 'aaaa0077'
+Key: 'aaaa0078' - Data: 'aaaa0078'
+Key: 'aaaa0079' - Data: 'aaaa0079'
+Key: 'aaaa0080' - Data: 'aaaa0080'
+Key: 'aaaa0081' - Data: 'aaaa0081'
+Key: 'aaaa0082' - Data: 'aaaa0082'
+Key: 'aaaa0083' - Data: 'aaaa0083'
+Key: 'aaaa0084' - Data: 'aaaa0084'
+Key: 'aaaa0085' - Data: 'aaaa0085'
+Key: 'aaaa0086' - Data: 'aaaa0086'
+Key: 'aaaa0087' - Data: 'aaaa0087'
+Key: 'aaaa0088' - Data: 'aaaa0088'
+Key: 'aaaa0089' - Data: 'aaaa0089'
+Key: 'aaaa0090' - Data: 'aaaa0090'
+Key: 'aaaa0091' - Data: 'aaaa0091'
+Key: 'aaaa0092' - Data: 'aaaa0092'
+Key: 'aaaa0093' - Data: 'aaaa0093'
+Key: 'aaaa0094' - Data: 'aaaa0094'
+Key: 'aaaa0095' - Data: 'aaaa0095'
+Key: 'aaaa0096' - Data: 'aaaa0096'
+Key: 'aaaa0097' - Data: 'aaaa0097'
+Key: 'aaaa0098' - Data: 'aaaa0098'
+Key: 'aaaa0099' - Data: 'aaaa0099'
+bt: quit

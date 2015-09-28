@@ -1,0 +1,173 @@
+# test for curent key in context functionality (introduced for dup keys)
+create test_db
+execute ../inskeysrand.bt
+echo on
+position s
+next
+next
+next
+next
+next
+next
+next
+next
+next
+next
+next
+next
+next
+next
+next
+next
+next
+next
+next
+next
+next
+next
+next
+next
+next
+next
+next
+next
+next
+next
+next
+next
+next
+next
+next
+next
+next
+next
+update-value-cur 100
+position s
+next
+next
+next
+next
+next
+next
+next
+next
+next
+next
+next
+next
+next
+next
+next
+next
+next
+next
+next
+next
+next
+next
+next
+next
+next
+next
+next
+next
+next
+next
+next
+next
+next
+next
+next
+next
+next
+next
+remove-cur
+position s
+list
+close
+create test_db
+echo off
+execute ../defdata.bt
+echo on
+position s
+next-data
+next-data
+next-data
+next-data
+next-data
+next-data
+next-data
+next-data
+next-data
+next-data
+next-data
+next-data
+next-data
+next-data
+next-data
+next-data
+next-data
+next-data
+next-data
+next-data
+next-data
+next-data
+next-data
+next-data
+next-data
+next-data
+next-data
+next-data
+next-data
+next-data
+next-data
+next-data
+next-data
+next-data
+next-data
+next-data
+next-data
+next-data
+update-data-cur this_is_a_new_data_record
+position s
+next-data
+next-data
+next-data
+next-data
+next-data
+next-data
+next-data
+next-data
+next-data
+next-data
+next-data
+next-data
+next-data
+next-data
+next-data
+next-data
+next-data
+next-data
+next-data
+next-data
+next-data
+next-data
+next-data
+next-data
+next-data
+next-data
+next-data
+next-data
+next-data
+next-data
+next-data
+next-data
+next-data
+next-data
+next-data
+next-data
+next-data
+next-data
+remove-data-cur
+position s
+list-data

@@ -1,0 +1,5 @@
+c test
+e defdata.cmd
+dr test
+e defdata.cmd
+cr $$default

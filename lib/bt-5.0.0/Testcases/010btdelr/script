@@ -1,0 +1,15 @@
+echo on
+create test_db
+define-root root_1
+define-root root_2
+define-root root_3
+change-root $$super
+find
+list
+change-root $$default
+remove-root root_3
+remove-root root_2
+remove-root root_1
+change-root root_3
+quit
+

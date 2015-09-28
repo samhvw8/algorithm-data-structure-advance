@@ -1,0 +1,11 @@
+# Define data records, then replace all with zero length records
+echo on
+create test_db
+execute ../defdata.bt
+execute ../upddata.bt
+find
+list-data
+execute ../upddata1.bt
+find
+list-data
+quit

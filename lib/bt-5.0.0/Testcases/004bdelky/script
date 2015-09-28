@@ -1,0 +1,37 @@
+echo on
+create test_db
+execute ../inskeysrand.bt
+find
+list
+execute ../delkeysrand.bt
+find
+list
+execute ../inskeysrand.bt
+find
+list
+execute ../delkeysord.bt
+find
+list
+execute ../inskeysrand.bt
+find
+list
+execute ../delkeysrord.bt
+find 
+list
+close
+# repeat with non-zero write threshold
+create test_db
+write-threshold 10
+execute ../inskeysrand.bt
+show structure
+execute ../delkeysrand.bt
+show structure
+execute ../inskeysrand.bt
+show structure
+execute ../delkeysord.bt
+show structure
+execute ../inskeysrand.bt
+show structure
+execute ../delkeysrord.bt
+show structure
+quit

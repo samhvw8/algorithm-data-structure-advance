@@ -1,0 +1,8 @@
+echo on
+create test_db
+close
+open test_db
+close
+# open non-existent file
+open i_dont_exist
+quit

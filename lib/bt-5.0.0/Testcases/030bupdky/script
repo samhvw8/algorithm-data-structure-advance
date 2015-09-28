@@ -1,0 +1,16 @@
+echo on
+create test_db
+define key1 1
+define key2 2
+define key3 3
+execute ../inskeysrand.bt
+update-value key3 50
+update-value key2 100
+update-value key1 200
+find key3
+find key2
+find key1
+update-value key3 1000
+find key3
+quit
+

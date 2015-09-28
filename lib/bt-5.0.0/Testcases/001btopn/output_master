@@ -1,0 +1,10 @@
+bt: create test_db
+bt: close
+warning: no in-use btree file
+bt: open test_db
+bt: close
+warning: no in-use btree file
+bt: # open non-existent file
+bt: open i_dont_exist
+(BTOPN) [8]  I/O error opening index file: i_dont_exist (System error: No such file or directory)
+bt: quit

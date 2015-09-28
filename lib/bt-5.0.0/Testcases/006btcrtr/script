@@ -1,0 +1,21 @@
+echo on
+create test_db
+define-root root_1
+execute ../inskeysrand.bt
+find
+list-keys
+define-root root_2
+execute ../inskeysrand.bt
+find
+list-keys
+define-root root_3
+execute ../inskeysord.bt
+find
+list-keys
+define-root root_4
+execute ../inskeysrord.bt
+change-root $$super
+find
+list-keys
+quit
+

@@ -1,0 +1,19 @@
+bt: create test_db
+bt: define-root root_1
+bt: define-root root_2
+bt: define-root root_3
+bt: change-root $$super
+bt: find
+bt: list
+Key: '$$default' = 1
+Key: '$$super' = 0
+Key: 'root_1' = 2
+Key: 'root_2' = 3
+Key: 'root_3' = 4
+bt: change-root $$default
+bt: remove-root root_3
+bt: remove-root root_2
+bt: remove-root root_1
+bt: change-root root_3
+Can't change root to: 'root_3'
+bt: quit

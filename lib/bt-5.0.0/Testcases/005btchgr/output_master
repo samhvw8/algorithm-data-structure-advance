@@ -1,0 +1,20 @@
+bt: create test_db
+bt: change-root $$super
+bt: find
+bt: list
+Key: '$$default' = 1
+Key: '$$super' = 0
+bt: change-root $$default
+bt: find
+bt: list
+bt: define new_key
+bt: change-root $$super
+bt: find
+bt: list
+Key: '$$default' = 1
+Key: '$$super' = 0
+bt: change-root $$default
+bt: find
+bt: list
+Key: 'new_key' = 0
+bt: quit

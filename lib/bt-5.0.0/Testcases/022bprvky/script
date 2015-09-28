@@ -1,0 +1,17 @@
+# list every key in the database 
+echo on
+create test_db
+execute ../inskeysrand.bt
+find ~~
+list-prev c
+# now repeat when open shared
+close
+open test_db s
+find ~~
+list-prev c
+# empty database
+close
+create test_db
+find ~~
+list-prev c
+quit

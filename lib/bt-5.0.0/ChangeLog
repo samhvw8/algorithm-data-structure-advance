@@ -1,0 +1,262 @@
+2012-11-22    <GBMAWIL@GB-L-104529>
+
+	* btr.c: Handle invalid source file version in LFS mode. 
+
+2012-11-21    <mark@GB-L-104529>
+
+	* btr.c: Fix seg fault with too few arguments.  Add usage string.
+
+012-11-13  Mark Willson  <mark@aqua>
+
+	* btdata.c: ZDUP recognised as a legitimate data block. Minimum
+	segment size stored in infblk[5] in a ZDUP/ZDATA block. Used to
+	ensure duplicate key entries are never split, making btr's
+	recovery job easier.
+
+2012-11-12  Mark Willson  <mark@aqua>
+
+	* Makefile: Added -lcurses to library list (required for OpenBSD).
+	Added btr.h as dependency for btr.c.
+
+	* btr.c: Added processing for duplicate key blocks.  Additional
+	statistics displayed.
+
+	* btdupkeys.c: New module for revised duplicate key handling -
+	restrictions on duplicate key support and shared mode index
+	navigation removed. Index file version bumped to x05; index file
+	structure has changed and new block type (ZDUP) introduced.  Many
+	changes to existing bt functions to support the new duplicate key
+	implementation.
+
+2012-04-11    <mark@GB-L-108394>
+
+	* bterr.c: Make error message for QNOTDA error code less cryptic.
+
+2012-04-10    <mark@GB-L-108394>
+
+	* btdata.c: Check value of key is a valid draddr before use.
+
+2011-06-24  Mark Willson  <mark@amber.hydrus.org.uk>
+
+	* btchgr.c: Added check on block type of candidate root.
+
+2011-06-22  Mark Willson  <mark@amber.hydrus.org.uk>
+
+	* samples: Added directory with some BT Library API examples.
+
+2011-06-13  Mark Willson  <mark@amber.hydrus.org.uk>
+
+	* bt.c: Added wt command to set write through threshold.
+
+	* bt.h, bputky.c, bremky.c, bdata.c, btthresh.c: Added support for
+	block write through when write threshold is reached, as an attempt
+	to reduce the index file damage on unexpected btree termination.
+
+2011-05-21  Mark Willson  <mark@amber.hydrus.org.uk>
+
+	* bt.c, btcmd.c: Add instant quit option to make it easy to create
+	damaged index files.
+
+2011-05-02  Mark Willson  <mark@amber.hydrus.org.uk>
+
+	* btr.c: Created initial version.
+
+	* btcrt.c, btcrtr.c: Root block number stored in ZNBLKS info word
+	in ZROOT blocks.
+
+	* bterr.c, bsuper.c, bstinf.c, bsetbk.c, bgtinf.c, bc.h: Bumped
+	version of BT index to x04.  Added code to detect use of 64 bit
+	index file with 32 bit library (and vice versa).
+
+	* btdata.c: Added duplicate draddr detection to brecsz for BT
+	recovery.
+
+	* bsptbk.c: Store root block number in ZNBLKS info word of a
+	ZINUSE block.  Added to aid BT recovery.
+
+2010-12-31  Mark Willson  <mark@amber.hydrus.org.uk>
+
+	* bt.c: Improve error handling in next and previous commands.
+
+	* bupdky.c: Prohibit current context operations when index file is
+	opened shared and duplicate keys exist.
+
+	* bdelky.c: Prohibit current context operations when index file is
+	opened shared and duplicate keys exist.
+ 
+	* btdata.c: Enforced read-only access in data functions.  Revised
+	support for btseln and btselp when index file is opened shared and
+	the current root supports duplicate keys. Prohibit current context
+	operations when shared and duplicate keys exist.
+
+2010-12-06  Mark Willson  <mark@amber.hydrus.org.uk>
+
+	* bt.c: Fixed problem of erratic error message display.
+
+2010-11-23  Mark Willson  <mark@amber.hydrus.org.uk>
+
+	* btcmd.c: Moved interrupt handling from bt.c, so that exit from
+	execute files is handled correctly.
+
+	* balbk1.c: Use brepky to insert new parent when balancing blocks.
+	Required due to changed function of bputky.
+
+	* bputky.c: Modified to insert key at beginning of duplicate set.
+	If only an rlink is provided (i.e llink ZNULL) key will be placed
+	at end of block, to support key demotion.
+
+2010-11-07  Mark Willson  <mark@amber.hydrus.org.uk>
+
+	* bt.c: New commands to support duplicate key functionality.
+	
+	* btpos.c: Added API function to allow positioning to start/end of
+	index.
+
+2010-11-05  Mark Willson  <mark@amber.hydrus.org.uk>
+
+	* btdups.c: Added to allow dup key support to be set/unset on a
+	root basis.
+
+	* binsky.c: Revised to support insertion of duplicate keys, when
+	the current root allows duplicate keys.
+
+	* bfndky.c: Revised to support searching when duplicate keys
+	exist.  If duplicate keys exist for the required key, the first of
+	the duplicate set is returned.
+
+2010-11-02  Mark Willson  <mark@amber.hydrus.org.uk>
+
+	* bt.c: Added commands to allow testing of previous key
+	functionality.
+
+	* bnxtky.c: Modfied to work correctly with bprvky.
+
+	* bprvky.c: Added to allow positioning to previous key.
+	
+
+2010-07-23  Mark Willson  <mark@amber.hydrus.org.uk>
+
+	* btcmd.c:  Add support for help on specific command.
+
+2010-07-01  Mark Willson  <mark@amber.hydrus.org.uk>
+
+	* bterr.c: Null'd return arguments before population.
+
+	* bsuper.c: Improved error message on I/O error reading superroot.
+
+	* btdelr.c: Forbid deletion of superroot.
+
+2010-06-18  Mark Willson  <mark@amber.hydrus.org.uk>
+
+	* btcmd.c: Moved bt command handling into this module.  Revamped
+	command handling completely.
+
+2010-06-07  Mark Willson  <mark@amber.hydrus.org.uk>
+
+	* bt.c, Makefile: Added support for readline when reading
+	interactive commands.  Readline support is only compiled in if the
+	readline include files are detected.
+
+	* btcrt.c: Fixed bug - super.smode not set to zero.
+
+2010-06-04  Mark Willson  <mark@amber.hydrus.org.uk>
+
+	* kcp.c: Improved error handling; use btcerr array size constants.
+
+	* bt.c: Added interrupt handling.
+
+	* bigt.c, bigtdel.c: Promoted to src-main; added interrupt handling.
+
+2010-06-02  Mark Willson  <mark@amber.hydrus.org.uk>
+
+	* bterr.c: Returned routine name and error message for btcerr
+	constrained to constant-defined sizes (ZRNAMESZ and ZMSGSZ).
+
+2010-05-28  Mark Willson  <mark@amber.hydrus.org.uk>
+
+	* bgtfre.c: Write newly acquired block to file immediately to
+	ensure sufficient disk space exists.
+
+	* bsptbk.c: Fix off-by-one error when splitting non-root block
+	with even number of keys.
+
+	* bterr.c: Improve handling of diagnostics involving system errors.
+	Added new error messages.
+	
+2010-05-26  Mark Willson  <mark@amber.hydrus.org.uk>
+
+	* All: Added support for large files (> 2GiB), as compile option.
+	
+2008-05-23  Mark Willson  <mark@gold>
+
+	* btdata.c: Reset error code in btins after determining existence of
+	key.
+	
+2008-05-21  Mark Willson  <mark@gold>
+
+	* bxdump.c: Make routine of type void, as defined in "btree_int.h"
+
+2008-05-09  Mark Willson  <mark@gold>
+
+	* bterr.c: QNOOPN text changed to indicate unused.
+
+	* btopn.c: QNOOPN error code replaced by the correct error code of
+	QOPNIO.
+
+2008-05-08    <mark@OPAL>
+
+	* bt.c: Replace use of FILENO macro by fileno function.
+
+	* bacini.c: Replace use of FILENO macro by fileno function.
+
+	* bc.h: Remove macro defining FILENO - replaced by standard C
+	library function fileno.
+
+	* bsemap.c: Included file <sys/fcntl.h> replaced by <fcntl.h>.
+
+2006-08-18  Mark Willson  <mark@gold>
+
+	* btopn.c: Fix memory leak on btact initialisation error.
+
+2006-04-09  Mark Willson  <mark@gold>
+
+	* bc.h: Make sleep time for locked file an implementation constant
+
+	* bsemap.c: Fix hardcoded error message for signal setup failure
+
+2005-12-27  Mark Willson  <mark@gold>
+
+	* btdata.c: Allow zero-length data records to be stored.  Fix
+	index file block leak when attempting to define a duplicate key.  
+
+2005-10-30  Mark Willson  <mark@gold>
+
+	* bclrlf.c: Initialise lfblk
+	* bnxtky.c: Handle calls if bfndky has not been called before
+
+2004-09-25  Mark Willson  <mark@gold>
+
+	* Detect and fail gracefully when the index file reaches maximum
+	size (that's 2^31-1 bytes on a 32 bit int implementation).
+
+2004-09-22  Mark Willson  <mark@gold>
+
+	* Detect overflow of data block addressing.
+
+2004-09-08  Mark Willson  <mark@crimson>
+
+	* Verify correct version of Btree file on open.  This involves a
+	small change to the structure of the B tree index file.  The first
+	word now contains a version identified in the most significant
+	halfword, while the ZROOT flag lives in the least significant
+	halfword. The routines which get and set block data cater for this
+	automatically.
+
+2004-05-31  Mark Willson  <mark@crimson>
+
+	* All: changes to API - removal of int *ok from function argument
+	  lists.
+	
+2003-12-15  Mark Willson  <mark@crimson>
+
+	* All: Revised for first public release.

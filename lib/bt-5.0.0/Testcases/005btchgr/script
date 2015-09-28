@@ -1,0 +1,16 @@
+echo on
+create test_db
+change-root $$super
+find
+list
+change-root $$default
+find
+list
+define new_key
+change-root $$super
+find
+list
+change-root $$default
+find
+list
+quit

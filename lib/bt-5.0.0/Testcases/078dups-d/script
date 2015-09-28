@@ -1,0 +1,12 @@
+create test_db
+dups on
+error on
+execute ../defdata.bt
+execute ../defdata.bt
+execute ../defdata.bt
+execute ../defdata.bt
+position s
+list-data c
+position e
+list-data-prev c
+quit

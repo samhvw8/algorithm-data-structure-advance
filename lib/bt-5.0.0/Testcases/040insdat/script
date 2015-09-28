@@ -1,0 +1,6 @@
+echo on
+create test_db
+execute ../defdata.bt
+find
+list-data
+quit

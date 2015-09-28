@@ -1,0 +1,79 @@
+# testing duplicate key functionality
+create test_db
+error on
+execute ../inskeysrand.bt
+execute ../inskeysrand.bt
+error off
+dups on
+execute ../inskeysrand.bt
+execute ../inskeysrand.bt
+execute ../inskeysrand.bt
+execute ../inskeysrand.bt
+execute ../inskeysrand.bt
+execute ../inskeysrand.bt
+execute ../inskeysrand.bt
+execute ../inskeysrand.bt
+execute ../inskeysrand.bt
+position s
+list c
+position e
+list-prev c
+find a
+next
+next
+next
+next
+next
+next
+next
+next
+next
+next
+next
+previous
+previous
+previous
+previous
+previous
+previous
+previous
+previous
+previous
+previous
+previous
+find b
+previous
+previous
+previous
+previous
+previous
+previous
+previous
+previous
+previous
+previous
+previous
+next
+next
+next
+next
+next
+next
+next
+next
+next
+next
+next
+execute ../delkeysrand.bt
+execute ../delkeysrand.bt
+execute ../delkeysrand.bt
+execute ../delkeysrand.bt
+execute ../delkeysrand.bt
+execute ../delkeysrand.bt
+execute ../delkeysrand.bt
+execute ../delkeysrand.bt
+execute ../delkeysrand.bt
+execute ../delkeysrand.bt
+position s
+list c
+quit

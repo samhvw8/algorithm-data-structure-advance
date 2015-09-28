@@ -1,0 +1,105 @@
+./src-lib/bacfre.o: src-lib/bacfre.c inc/bc.h inc/bt.h inc/bc.h
+./src-lib/bacini.o: src-lib/bacini.c inc/bc.h inc/bt.h inc/bc.h inc/btree_int.h \
+ inc/bt.h
+./src-lib/balbk1.o: src-lib/balbk1.c inc/bc.h inc/bt.h inc/bc.h inc/btree_int.h \
+ inc/bt.h
+./src-lib/balblk.o: src-lib/balblk.c inc/bc.h inc/bt.h inc/bc.h inc/btree_int.h \
+ inc/bt.h
+./src-lib/bclrlf.o: src-lib/bclrlf.c inc/bc.h inc/bt.h inc/bc.h
+./src-lib/bclrst.o: src-lib/bclrst.c inc/bc.h inc/bt.h inc/bc.h
+./src-lib/bcpybk.o: src-lib/bcpybk.c inc/bc.h inc/bt.h inc/bc.h inc/btree_int.h \
+ inc/bt.h
+./src-lib/bdbug.o: src-lib/bdbug.c inc/bc.h inc/bt.h inc/bc.h inc/btree.h inc/bt.h \
+ inc/btree_int.h
+./src-lib/bdelk1.o: src-lib/bdelk1.c inc/btree.h inc/bt.h inc/bc.h inc/btree_int.h
+./src-lib/bdelky.o: src-lib/bdelky.c inc/bc.h inc/bt.h inc/bc.h inc/btree.h \
+ inc/bt.h inc/btree_int.h
+./src-lib/bdemte.o: src-lib/bdemte.c inc/bc.h inc/bt.h inc/bc.h inc/btree_int.h \
+ inc/bt.h
+./src-lib/bfndky.o: src-lib/bfndky.c inc/bc.h inc/bt.h inc/bc.h inc/btree.h \
+ inc/bt.h inc/btree_int.h
+./src-lib/bgtfre.o: src-lib/bgtfre.c inc/bc.h inc/bt.h inc/bc.h inc/btree_int.h \
+ inc/bt.h
+./src-lib/bgtinf.o: src-lib/bgtinf.c inc/bc.h inc/bt.h inc/bc.h inc/btree_int.h \
+ inc/bt.h
+./src-lib/bgtslt.o: src-lib/bgtslt.c inc/bc.h inc/bt.h inc/bc.h inc/btree_int.h \
+ inc/bt.h
+./src-lib/binsky.o: src-lib/binsky.c inc/btree.h inc/bt.h inc/bc.h inc/btree_int.h
+./src-lib/bjnblk.o: src-lib/bjnblk.c inc/bc.h inc/bt.h inc/bc.h inc/btree_int.h \
+ inc/bt.h
+./src-lib/bjoin.o: src-lib/bjoin.c inc/bc.h inc/bt.h inc/bc.h inc/btree_int.h \
+ inc/bt.h
+./src-lib/bleaf.o: src-lib/bleaf.c inc/bc.h inc/bt.h inc/bc.h inc/btree_int.h \
+ inc/bt.h
+./src-lib/bmkfre.o: src-lib/bmkfre.c inc/bc.h inc/bt.h inc/bc.h inc/btree_int.h \
+ inc/bt.h
+./src-lib/bmodky.o: src-lib/bmodky.c inc/bc.h inc/bt.h inc/bc.h inc/btree_int.h \
+ inc/bt.h
+./src-lib/bnewap.o: src-lib/bnewap.c inc/bc.h inc/bt.h inc/bc.h inc/btree_int.h \
+ inc/bt.h
+./src-lib/bnxtbk.o: src-lib/bnxtbk.c inc/bc.h inc/bt.h inc/bc.h inc/btree_int.h \
+ inc/bt.h
+./src-lib/bnxtky.o: src-lib/bnxtky.c inc/bc.h inc/bt.h inc/bc.h inc/btree_int.h \
+ inc/bt.h inc/btree.h
+./src-lib/bprvky.o: src-lib/bprvky.c inc/bc.h inc/bt.h inc/bc.h inc/btree_int.h \
+ inc/bt.h inc/btree.h
+./src-lib/bputky.o: src-lib/bputky.c inc/bc.h inc/bt.h inc/bc.h inc/btree_int.h \
+ inc/bt.h
+./src-lib/brdblk.o: src-lib/brdblk.c inc/bc.h inc/bt.h inc/bc.h inc/btree_int.h \
+ inc/bt.h
+./src-lib/bremky.o: src-lib/bremky.c inc/bc.h inc/bt.h inc/bc.h inc/btree_int.h \
+ inc/bt.h
+./src-lib/brepky.o: src-lib/brepky.c inc/bc.h inc/bt.h inc/bc.h inc/btree_int.h \
+ inc/bt.h
+./src-lib/bsemap.o: src-lib/bsemap.c inc/bc.h inc/bt.h inc/bc.h inc/btree_int.h \
+ inc/bt.h
+./src-lib/bsetbk.o: src-lib/bsetbk.c inc/bc.h inc/bt.h inc/bc.h inc/btree_int.h \
+ inc/bt.h
+./src-lib/bsetbs.o: src-lib/bsetbs.c inc/bc.h inc/bt.h inc/bc.h inc/btree_int.h \
+ inc/bt.h
+./src-lib/bsptbk.o: src-lib/bsptbk.c inc/bc.h inc/bt.h inc/bc.h inc/btree_int.h \
+ inc/bt.h
+./src-lib/bsrhbk.o: src-lib/bsrhbk.c inc/bc.h inc/bt.h inc/bc.h inc/btree_int.h \
+ inc/bt.h
+./src-lib/bstinf.o: src-lib/bstinf.c inc/bc.h inc/bt.h inc/bc.h inc/btree_int.h \
+ inc/bt.h
+./src-lib/bsuper.o: src-lib/bsuper.c inc/bc.h inc/bt.h inc/bc.h inc/btree_int.h \
+ inc/bt.h
+./src-lib/btchgr.o: src-lib/btchgr.c inc/bc.h inc/bt.h inc/bc.h inc/btree.h \
+ inc/bt.h inc/btree_int.h
+./src-lib/btcls.o: src-lib/btcls.c inc/bc.h inc/bt.h inc/bc.h inc/btree.h inc/bt.h \
+ inc/btree_int.h
+./src-lib/btcrt.o: src-lib/btcrt.c inc/bc.h inc/bt.h inc/bc.h inc/btree.h inc/bt.h \
+ inc/btree_int.h
+./src-lib/btcrtr.o: src-lib/btcrtr.c inc/bc.h inc/btree.h inc/bt.h inc/bc.h \
+ inc/btree_int.h
+./src-lib/btdata.o: src-lib/btdata.c inc/bc.h inc/bt.h inc/bc.h inc/btree.h \
+ inc/bt.h inc/btree_int.h
+./src-lib/btdelr.o: src-lib/btdelr.c inc/bc.h inc/bt.h inc/bc.h inc/btree.h \
+ inc/bt.h inc/btree_int.h
+./src-lib/btdupkey.o: src-lib/btdupkey.c inc/btree.h inc/bt.h inc/bc.h \
+ inc/btree_int.h
+./src-lib/btdups.o: src-lib/btdups.c inc/btree.h inc/bt.h inc/bc.h inc/btree_int.h
+./src-lib/bterr.o: src-lib/bterr.c inc/bc.h
+./src-lib/btinit.o: src-lib/btinit.c inc/bc.h inc/bt.h inc/bc.h inc/btree.h \
+ inc/bt.h inc/btree_int.h
+./src-lib/btlock.o: src-lib/btlock.c inc/bc.h inc/bt.h inc/bc.h inc/btree.h \
+ inc/bt.h inc/btree_int.h
+./src-lib/btopn.o: src-lib/btopn.c inc/bc.h inc/bt.h inc/bc.h inc/btree.h inc/bt.h \
+ inc/btree_int.h
+./src-lib/btpos.o: src-lib/btpos.c inc/bc.h inc/bt.h inc/bc.h inc/btree.h inc/bt.h \
+ inc/btree_int.h
+./src-lib/btque.o: src-lib/btque.c inc/bc.h inc/bt.h inc/bc.h inc/btree_int.h \
+ inc/bt.h
+./src-lib/btstk.o: src-lib/btstk.c inc/bc.h inc/bt.h inc/bc.h inc/btree_int.h \
+ inc/bt.h
+./src-lib/btthresh.o: src-lib/btthresh.c inc/btree.h inc/bt.h inc/bc.h \
+ inc/btree_int.h
+./src-lib/bupdky.o: src-lib/bupdky.c inc/bc.h inc/bt.h inc/bc.h inc/btree.h \
+ inc/bt.h inc/btree_int.h
+./src-lib/butil.o: src-lib/butil.c inc/btree_int.h inc/bt.h inc/bc.h
+./src-lib/bvalap.o: src-lib/bvalap.c inc/bc.h inc/bt.h inc/bc.h inc/btree_int.h \
+ inc/bt.h
+./src-lib/bwrblk.o: src-lib/bwrblk.c inc/bc.h inc/bt.h inc/bc.h inc/btree_int.h \
+ inc/bt.h
+./src-lib/bxdump.o: src-lib/bxdump.c inc/btree_int.h inc/bt.h inc/bc.h
