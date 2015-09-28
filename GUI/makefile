@@ -8,7 +8,7 @@ LFLAGS = -lbt -lutility
 SRCS=test_lib.c
 OBJS=$(SRCS:.c=.o)
 EXECUTABLE=test_lib
-another= gmon.out
+another= gmon.out gui
 
 all: $(SRCS) $(EXECUTABLE)
 
@@ -23,6 +23,8 @@ profiling: all
 $(EXECUTABLE): $(OBJS)
 	$(CC) $(LDFLAGS) $(OBJS) -o $@ -I$(INC) -L$(LIB) $(LFLAGS)
 
+gui:
+	gcc -o gui gui.c -L$(LIB) -I$(INC) -lbt `pkg-config --cflags --libs gtk+-3.0`
 .c.o:
 	$(CC) -I $(INC) $(CFLAGS) $< -o $@
 
