@@ -1,12 +1,13 @@
-#include <graph.h>
+#include "graph.h"
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 
 typedef struct station_s {
      char name[100];
 } station;
 
-typedef map_s {
+typedef struct map_s {
      station *stations_list;
      int station_num;
      graph graph;
@@ -14,9 +15,9 @@ typedef map_s {
 
 map get_data_from_file(char *file_name);
 
-int main(int argc, char const *argv[]) {
+int main() {
 
-
+     map data = get_data_from_file("input.graph");
 
      return 0;
 }
@@ -57,11 +58,11 @@ map get_data_from_file(char *file_name) {
           if (temp[i] == '\0')
                continue;
 
-          if (ret.station_num = MAX - 1) {
+          if (ret.station_num == MAX - 1) {
                MAX += 10;
                ret.stations_list = (station *)realloc(ret.stations_list, sizeof(station) * MAX);
                if (ret.stations_list == NULL) {
-                    fprintf(stder, "Reallocate failed in %s:%d !!\n", __FILE__, __LINE__);
+                    fprintf(stderr, "Reallocate failed in %s:%d !!\n", __FILE__, __LINE__);
                     exit(1);
                }
           }
@@ -70,7 +71,6 @@ map get_data_from_file(char *file_name) {
      }
 
      // lines parse
-
      while (1) {
           fgets(temp, 100, f);
           if (feof(f))
@@ -82,13 +82,22 @@ map get_data_from_file(char *file_name) {
           for (i = 0; temp[i] != '\0' && temp[i] != '='; i++);
           if (temp[i] == '\0')
                continue;
+          char temp2[100];
 
-          
+          sscanf(temp, "%*[^=]=%[^\n]", temp2);
 
+          char *p = strtok(temp2, " ");
+          int v;
+          v = p[1] - '0';
+          p = strtok(NULL, " ");
+          while ( p != NULL )
+          {
+               int v2 = p[1] - '0';
+               add_edge(ret.graph, v, v2);
+               v = v2;
+               p = strtok(NULL, " ");
+          }
      }
-
-
-
 
      return ret;
 }

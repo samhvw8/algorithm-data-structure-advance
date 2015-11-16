@@ -5,9 +5,9 @@ LDFLAGS= $(FLAGS)
 INC =../lib/inc 
 LIB =../lib/llib
 LFLAGS = -lfdr -lutility
-SRCS=graph.c test_graph.c 
+SRCS=graph.c metro_stations.c
 OBJS=$(SRCS:.c=.o)
-EXECUTABLE=test_graph
+EXECUTABLE=metro_stations
 another= gmon.out
 
 all: $(SRCS) $(EXECUTABLE)
