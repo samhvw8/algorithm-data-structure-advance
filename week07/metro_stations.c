@@ -13,16 +13,49 @@ typedef struct map_s {
      graph graph;
 } map;
 
-map get_data_from_file(char *file_name);
+map data;
 
-int main() {
+void print_metro(int node) {
+     printf(" %s ", data.stations_list[node - 1].name);
+}
 
-     map data = get_data_from_file("input.graph");
+map get_data_from_file(const char *file_name);
 
+int main(int argc, char const *argv[]) {
+     if (argc != 2) {
+          printf("%s\n./%s %s", "WRONG FORMAT !!\n", argv[0],
+                 ".graph file"
+                );
+          exit(1);
+     }
+
+
+
+     data = get_data_from_file(argv[1]);
+
+     int i;
+     printf("%s\n", "LIST OF METRO STATIONS");
+     for (i = 0; i < data.station_num; ++i) {
+          printf("%3d. %s\n", i + 1, data.stations_list[i].name);
+     }
+     printf("\n\n");
+
+     printf("%s", "Find shortest path between 2 metro stations :\n"
+            "Select Number of start station \n\t> ");
+     int s, e;
+     scanf(" %d", &s);
+     printf("%s", "Select Number of end station \n\t> ");
+     scanf(" %d", &e);
+
+     printf("%s\n", "shortest path :");
+     BFS(data.graph, s, e, print_metro);
+     printf("\n");
+     free(data.stations_list);
+     drop_graph(&(data.graph));
      return 0;
 }
 
-map get_data_from_file(char *file_name) {
+map get_data_from_file(const char *file_name) {
      FILE *f = fopen(file_name, "r");
      if (f == NULL) {
           fprintf(stderr, "Can't Open file %s !!\n", file_name);
@@ -98,6 +131,6 @@ map get_data_from_file(char *file_name) {
                p = strtok(NULL, " ");
           }
      }
-
+     fclose(f);
      return ret;
 }
