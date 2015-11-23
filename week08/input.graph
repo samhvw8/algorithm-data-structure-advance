@@ -1,0 +1,16 @@
+[STATIONS]
+S1=Ha Noi
+S2=Hai Phong
+S3=Nam Dinh
+S4=Ninh Binh
+S5=Thanh Hoa
+S6=Lang Son
+S7=Bac Giang
+S8=Ha Nam
+S9=Son La
+[LINES]
+M1=S1 S2 S4 S3 S7
+M2=S3 S5 S6 S8 S9
+M3=S1 S6 S7
+M4=S2 S3 S7 S8 S9
+M5=S1 S7 S9
