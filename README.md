@@ -17,3 +17,9 @@ Use Libfdr for Phone book
 Use B-tree lib for Phone book
 ## Week 06
 Implement Graph with matrix adj and rbtree lib
+## Week 07
+DFS and BFS
+## Week 08
+directed Graph
+## Week 09
+Weighted Graph
