@@ -18,3 +18,4 @@ extern void DFS(graph g, int start, int stop, void (*visited_func)(graph, int));
 extern int get_graph_node_num(graph g);
 extern int is_cyclic_util(graph g, int start);
 extern int is_cyclic(graph g);
+extern void TSort(graph g, void (*visited_func)(graph, int));

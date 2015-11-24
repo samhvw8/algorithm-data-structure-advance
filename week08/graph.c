@@ -81,10 +81,10 @@ int out_degree(graph g, int vertex, int *output){
      if(g.edges == NULL || g.vertices == NULL)
           return 0;
      JRB node = jrb_find_int(g.edges, vertex);                           
-     JRB tree;
      if(node == NULL)                                         
           return 0;
      int total = 0;
+     JRB tree;
      tree = (JRB) jval_v(node->val);
      jrb_traverse(node, tree)
           output[total++] = jval_i(node->key);
@@ -97,13 +97,13 @@ int in_degree(graph g, int vertex, int *output){
           return 0;
 
             
-     JRB node = jrb_find_int(g.edges, vertex);                           
+     JRB node = jrb_find_int(g.vertices, vertex);                           
      if(node == NULL)                                         
           return 0;
 
      int total = 0;
 
-     jrb_traverse(node, g.edges) {
+     jrb_traverse(node, g.vertices) {
        if(has_edge(g, jval_i(node->key), vertex)){
          output[total++] = jval_i(node->key);
        }
@@ -127,7 +127,7 @@ void BFS(graph g, int start, int stop, void (*visited_func)(graph, int)){
     return;
      JRB tmp;
      int v = 0;
-     jrb_traverse(tmp, g.edges){
+     jrb_traverse(tmp, g.vertices){
           v++;
      }
      
@@ -145,7 +145,7 @@ void BFS(graph g, int start, int stop, void (*visited_func)(graph, int)){
 
 
      // add start node to queue
-     JRB node = jrb_find_int(g.edges, start);
+     JRB node = jrb_find_int(g.vertices, start);
      if(node == NULL)
           goto end;
          
@@ -190,7 +190,7 @@ void DFS(graph g, int start, int stop, void (*visited_func)(graph, int)){
     return;
      JRB tmp;
      int v = 0;
-     jrb_traverse(tmp, g.edges){
+     jrb_traverse(tmp, g.vertices){
           v++;
      }
      
@@ -265,7 +265,7 @@ int is_cyclic_util(graph g, int start){
     return 0;
      JRB tmp;
      int v = 0;
-     jrb_traverse(tmp, g.edges){
+     jrb_traverse(tmp, g.vertices){
           v++;
      }
      
@@ -283,7 +283,7 @@ int is_cyclic_util(graph g, int start){
 
 
      // add start node to stack
-     JRB node = jrb_find_int(g.edges, start);
+     JRB node = jrb_find_int(g.vertices, start);
      if(node == NULL)
           goto end;
          
@@ -308,7 +308,7 @@ int is_cyclic_util(graph g, int start){
             return 1;
           }
           
-          JRB u_node = jrb_find_int(g.edges, u);
+          JRB u_node = jrb_find_int(g.vertices, u);
           if(u_node == NULL)
                continue;
           
@@ -332,10 +332,82 @@ int is_cyclic(graph g){
     return 0;
      JRB tmp;
      int v = 0;
-     jrb_traverse(tmp, g.edges){
+     jrb_traverse(tmp, g.vertices){
           v++;
           if(is_cyclic_util(g, v))
             return 1;
      }
      return 0;
+}
+
+void TSort(graph g, void (*visited_func)(graph, int)){
+  if(g.edges == NULL || g.vertices == NULL)
+    return;
+
+     Dllist queue = new_dllist();
+     JRB tmp;
+
+     JRB node = jrb_find_int(g.vertices, 0);
+     if(node == NULL)
+          goto end;
+
+     int v = 0, num_node = get_graph_node_num(g); // ---------------------------------
+     int *in_degree_node = malloc(sizeof(int) * num_node);
+     if(in_degree_node == NULL) {
+      fprintf(stderr, "%s in %s:%d !!\n", "malloc failed", __FILE__, __LINE__);
+      exit(1);
+     }
+
+     int *in_degree_arr = malloc(sizeof(int) * num_node);
+     if(in_degree_arr == NULL) {
+      fprintf(stderr, "%s in %s:%d !!\n", "malloc failed", __FILE__, __LINE__);
+      exit(1);
+     }
+
+     jrb_traverse(tmp, g.vertices){
+          if((in_degree_arr[v] = in_degree(g, v, in_degree_node)) == 0) {
+            dll_append(queue, new_jval_i(v));
+          }
+          v++;
+     }
+    free(in_degree_node);
+     while(!dll_empty(queue)){
+          Dllist node = dll_first(queue);
+          int u = jval_i(node->val);
+          dll_delete_node(node);
+          
+          visited_func(g, u);
+
+          int *out_degree_node_u = malloc(sizeof(int) * num_node);
+          if(out_degree_node_u == NULL) {
+              fprintf(stderr, "%s in %s:%d !!\n", "malloc failed", __FILE__, __LINE__);
+              exit(1);
+          }
+
+          int out_degree_u;
+          if((out_degree_u = out_degree(g, u, out_degree_node_u)) != 0) {
+            int w, i;
+            int *in_degree_node_w = malloc(sizeof(int) * num_node);
+           if(in_degree_node_w == NULL) {
+            fprintf(stderr, "%s in %s:%d !!\n", "malloc failed", __FILE__, __LINE__);
+            exit(1);
+           }
+           for (i = 0; i < out_degree_u; ++i)
+           {  
+             w = out_degree_node_u[i];
+             
+             in_degree_arr[w] -= 1;
+             
+             if(in_degree_arr[w] == 0) {
+              dll_append(queue, new_jval_i(w));
+             }
+           }
+           free(in_degree_node_w);
+          }
+          free(out_degree_node_u);
+     }
+
+end:  
+    free(in_degree_arr);
+    free_dllist(queue);
 }
