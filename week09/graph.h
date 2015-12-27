@@ -1,6 +1,6 @@
 #include <libfdr/jrb.h>
 #include <libfdr/dllist.h>
-#define INFINITY 100000000000
+#define INFINITY 10000000
 #define UNDEFINED -1
 typedef struct graph_s {
   JRB vertices,
