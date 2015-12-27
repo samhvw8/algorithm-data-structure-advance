@@ -4,7 +4,7 @@ CFLAGS= -c $(FLAGS)
 LDFLAGS= $(FLAGS)
 INC =../lib/inc 
 LIB =../lib/llib
-LFLAGS = -lfdr -lutility
+LFLAGS = -lfdr 
 SRCS=graph.c test_graph.c
 OBJS=$(SRCS:.c=.o)
 EXECUTABLE=test_graph
@@ -27,6 +27,10 @@ prof: all
 Ddgraph: clean
 Ddgraph: CFLAGS += -DDIRECTED_GRAPH
 Ddgraph: all
+
+Ddgdebug: clean
+Ddgdebug: CFLAGS += -DDIRECTED_GRAPH
+Ddgdebug: debug
 
 $(EXECUTABLE): $(OBJS)
 	$(CC) $(LDFLAGS) $(OBJS) -o $@ -I$(INC) -L$(LIB) $(LFLAGS)
