@@ -24,9 +24,9 @@ prof: CFLAGS += -pg
 prof: LDFLAGS += -pg
 prof: all
 
-udgraph: clean
-udgraph: CFLAGS += -DUDGGIN
-udgraph: all
+Ddgraph: clean
+Ddgraph: CFLAGS += -DDIRECTED_GRAPH
+Ddgraph: all
 
 $(EXECUTABLE): $(OBJS)
 	$(CC) $(LDFLAGS) $(OBJS) -o $@ -I$(INC) -L$(LIB) $(LFLAGS)

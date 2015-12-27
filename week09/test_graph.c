@@ -9,31 +9,31 @@ int main() {
      int i, n , output[100];
      graph g = create_graph();
 
-     add_vertex(g, 0, "0");
-     add_vertex(g, 1, "1");
-     add_vertex(g, 2, "2");
-     add_vertex(g, 3, "3");
-     add_vertex(g, 4, "4");
-     add_vertex(g, 5, "5");
-     add_vertex(g, 6, "6");
-     add_vertex(g, 7, "7");
-     add_vertex(g, 8, "8");
 
 
-     add_edge(g, 0, 1, 4);
-     add_edge(g, 0, 7, 8);
-     add_edge(g, 1, 2, 8);
-     add_edge(g, 1, 7, 11);
-     add_edge(g, 2, 3, 7);
-     add_edge(g, 2, 8, 2);
-     add_edge(g, 2, 5, 4);
-     add_edge(g, 3, 4, 9);
-     add_edge(g, 3, 5, 14);
-     add_edge(g, 4, 5, 10);
-     add_edge(g, 5, 6, 2);
+
+     add_vertex(g, 0, "C");
+     add_vertex(g, 1, "G");
+     add_vertex(g, 2, "B");
+     add_vertex(g, 3, "A");
+     add_vertex(g, 4, "D");
+     add_vertex(g, 5, "E");
+     add_vertex(g, 6, "F");
+     add_vertex(g, 7, "H");
+
+     add_edge(g, 0, 2, 1);
+     add_edge(g, 0, 3, 1);
+     add_edge(g, 0, 1, 1);
+     add_edge(g, 0, 6, 1);
+     add_edge(g, 2, 5, 1);
+     add_edge(g, 3, 4, 1);
+     add_edge(g, 3, 5, 1);
+     add_edge(g, 4, 5, 1);
+     add_edge(g, 4, 6, 1);
+     add_edge(g, 5, 6, 1);
      add_edge(g, 6, 7, 1);
-     add_edge(g, 6, 8, 6);
-     add_edge(g, 7, 8, 7);
+
+
 
 #define PRINT_ADJACENT_VERTIES(v) {                                 \
           n = out_degree(g, v, output);                              \
@@ -58,7 +58,7 @@ int main() {
      int path[100];
      double len[100];
      double out_val = shortest_path(g, 0, 4, path, len);
-     if(out_val == INFINITY) {
+     if (out_val == INFINITY) {
           printf("Not found path !!\n");
      } else {
           printf("%.2f !!!\n", out_val);
@@ -69,25 +69,24 @@ int main() {
 
      }
 
+     printf("\n\tTest traversal BFS: ");
 
-     // printf("\n\tTest traversal BFS: ");
+     BFS(g, 2, -1, print_node);
 
-     // BFS(g, 2, -1, print_node);
+     printf("\n\tTest traversal DFS: ");
 
-     // printf("\n\tTest traversal DFS: ");
+     DFS(g, 2, -1, print_node);
+     printf("\n%s\n", "Check TSort");
+     TSort(g, print_node);
+     printf("\n");
+     printf("%s\n", "Check cycle");
+     if (is_cyclic(g)) {
+          printf("%s\n", "graph has cycle");
+     } else {
+          printf("%s\n", "graph has no cycle");
+     }
 
-     // DFS(g, 2, -1, print_node);
-     // printf("%s\n", "Check TSort");
-     // TSort(g, print_node);
-     // printf("\n");
-     // printf("%s\n", "Check cycle");
-     // if(is_cyclic(g)){
-     //      printf("%s\n", "graph has cycle");
-     // } else {
-     //      printf("%s\n", "graph has no cycle");
-     // }
-
-     // printf("\n\nTest drop !\n");
+     printf("\n\nTest drop !\n");
 
      drop_graph(&g);
 
@@ -97,5 +96,5 @@ int main() {
 
 
 void print_node(graph g, int i) {
-     printf("\t\t%d", i);
+     printf("\t\t%s", get_vertex(g, i));
 }
