@@ -200,7 +200,7 @@ void DFS(graph g, int start, int stop, void (*visited_func)(graph, int)) {
   if (g.edges == NULL || g.vertices == NULL)
     return;
   JRB tmp;
-  int max_id = get_graph_max_id(g)
+  int max_id = get_graph_max_id(g);
 
   int *visited = (int*)malloc((max_id + 1) * sizeof(int));
   if (visited == NULL) {
