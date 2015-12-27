@@ -137,14 +137,9 @@ void BFS(graph g, int start, int stop, void (*visited_func)(graph, int)) {
   if (g.edges == NULL || g.vertices == NULL)
     return;
   JRB tmp;
-  int max_id = 0;
-  jrb_traverse(tmp, g.vertices) {
-    int key = jval_i(tmp->key);
-    if (key > max_id)
-      max_id = key;
-  }
+  int max_id = get_graph_max_id(g);
 
-  int *visited = (int*)malloc(max_id * sizeof(int));
+  int *visited = (int*)malloc((max_id + 1) * sizeof(int));
   if (visited == NULL) {
     fprintf(stderr, "Allocated failed in %s:%d \n", __FILE__, __LINE__);
     exit(1);
@@ -205,14 +200,9 @@ void DFS(graph g, int start, int stop, void (*visited_func)(graph, int)) {
   if (g.edges == NULL || g.vertices == NULL)
     return;
   JRB tmp;
-  int max_id = 0;
-  jrb_traverse(tmp, g.vertices) {
-    int key = jval_i(tmp->key);
-    if (key > max_id)
-      max_id = key;
-  }
+  int max_id = get_graph_max_id(g)
 
-  int *visited = (int*)malloc(max_id * sizeof(int));
+  int *visited = (int*)malloc((max_id + 1) * sizeof(int));
   if (visited == NULL) {
     fprintf(stderr, "Allocated failed in %s:%d \n", __FILE__, __LINE__);
     exit(1);
@@ -299,14 +289,9 @@ int is_cyclic_util(graph g, int start) {
   if (g.edges == NULL || g.vertices == NULL)
     return 0;
   JRB tmp;
-  int max_id = 0;
-  jrb_traverse(tmp, g.vertices) {
-    int key = jval_i(tmp->key);
-    if (key > max_id)
-      max_id = key;
-  }
+  int max_id = get_graph_max_id(g);
 
-  int *visited = (int*)malloc(max_id * sizeof(int));
+  int *visited = (int*)malloc((max_id + 1) * sizeof(int));
   if (visited == NULL) {
     fprintf(stderr, "Allocated failed in %s:%d \n", __FILE__, __LINE__);
     exit(1);
@@ -388,14 +373,14 @@ void TSort(graph g, void (*visited_func)(graph, int)) {
   if (node == NULL)
     goto end;
 
-  int max_id = get_graph_max_id(g); // ---------------------------------
-  int *in_degree_node = malloc(sizeof(int) * max_id);
+  int max_id = get_graph_max_id(g);
+  int *in_degree_node = malloc(sizeof(int) * (max_id + 1));
   if (in_degree_node == NULL) {
     fprintf(stderr, "%s in %s:%d !!\n", "malloc failed", __FILE__, __LINE__);
     exit(1);
   }
 
-  int *in_degree_arr = malloc(sizeof(int) * max_id);
+  int *in_degree_arr = malloc(sizeof(int) * (max_id + 1));
   if (in_degree_arr == NULL) {
     fprintf(stderr, "%s in %s:%d !!\n", "malloc failed", __FILE__, __LINE__);
     exit(1);
@@ -405,18 +390,12 @@ void TSort(graph g, void (*visited_func)(graph, int)) {
 
   jrb_traverse(tmp, g.vertices) {
     int v = jval_i(tmp->key);
-    int z = in_degree(g, v, in_degree_node);
-    int zz = out_degree(g, v, in_degree_node);
-    printf("!!!!!!!!!%d    %d    %d\n", v, z, zz);
-    if ((in_degree_arr[v] = z) == 0) {
+    if ((in_degree_arr[v] = in_degree(g, v, in_degree_node)) == 0) {
       dll_append(queue, new_jval_i(v));
-      
     }
-
   }
 
   free(in_degree_node);
-  printf("%s\n", "");
   while (!dll_empty(queue)) {
     Dllist node = dll_first(queue);
     int u = jval_i(node->val);
@@ -424,7 +403,7 @@ void TSort(graph g, void (*visited_func)(graph, int)) {
 
     visited_func(g, u);
 
-    int *out_degree_node_u = malloc(sizeof(int) * max_id);
+    int *out_degree_node_u = malloc(sizeof(int) * (max_id + 1));
     if (out_degree_node_u == NULL) {
       fprintf(stderr, "%s in %s:%d !!\n", "malloc failed", __FILE__, __LINE__);
       exit(1);
@@ -433,7 +412,7 @@ void TSort(graph g, void (*visited_func)(graph, int)) {
     int out_degree_u;
     if ((out_degree_u = out_degree(g, u, out_degree_node_u)) != 0) {
       int w, i;
-      int *in_degree_node_w = malloc(sizeof(int) * max_id);
+      int *in_degree_node_w = malloc(sizeof(int) * (max_id + 1));
       if (in_degree_node_w == NULL) {
         fprintf(stderr, "%s in %s:%d !!\n", "malloc failed", __FILE__, __LINE__);
         exit(1);
@@ -465,9 +444,9 @@ double shortest_path(graph graph, int s, int t, int* path, double* length) {
   if (path == NULL || length == NULL)
     return INFINITY;
 
-  int i, max_node = get_graph_max_id(graph);
-  double *dist = malloc(sizeof(double) * max_node);  // free ?
-  int *prev = malloc(sizeof(int) * max_node);
+  int i, max_id = get_graph_max_id(graph);
+  double *dist = malloc(sizeof(double) * (max_id + 1));  // free ?
+  int *prev = malloc(sizeof(int) * (max_id + 1));
   if (!dist || !prev) {
     fprintf(stderr, "%s%s:%d\n", "Allocated Failed in ", __FILE__, __LINE__);
     exit(1);
@@ -475,7 +454,7 @@ double shortest_path(graph graph, int s, int t, int* path, double* length) {
 
   Dllist queue = new_dllist();   // free ?
 
-  for (i = 0; i <= max_node ; ++i) {
+  for (i = 0; i <= max_id ; ++i) {
     if (i != s) {
       dist[i] = INFINITY;
       prev[i] = UNDEFINED;
@@ -503,7 +482,7 @@ double shortest_path(graph graph, int s, int t, int* path, double* length) {
     }
 
     //
-    int *out_degree_u_list = malloc(sizeof(int) * (max_node + 1));  // free ?
+    int *out_degree_u_list = malloc(sizeof(int) * (max_id + 1));  // free ?
     if (!out_degree_u_list) {
       fprintf(stderr, "%s%s:%d\n", "Allocated Failed in ", __FILE__, __LINE__);
       exit(1);
@@ -527,7 +506,7 @@ double shortest_path(graph graph, int s, int t, int* path, double* length) {
 
   }
 
-  for (i = 0; i <= max_node + 1; i++) {
+  for (i = 0; i <= max_id + 1; i++) {
     length[i] = dist[i];
   }
 
@@ -542,11 +521,10 @@ double shortest_path(graph graph, int s, int t, int* path, double* length) {
     }
     path[++j] = -1;
   }
-  return dist[t];
 
   //
   free_dllist(queue);
   free(dist);
   free(prev);
-  return 3;
+  return dist[t];
 }
