@@ -278,7 +278,7 @@ int get_graph_min_id(graph g) {
 int is_cyclic_util(graph g, int start) {
   if (g.edges == NULL || g.vertices == NULL)
     return 0;
-  JRB tmp;
+
   int max_id = get_graph_max_id(g);
 
   int *visited = (int*)malloc((max_id + 1) * sizeof(int));
@@ -305,7 +305,7 @@ int is_cyclic_util(graph g, int start) {
   dll_append(stack, new_jval_i(start));
   //
 
-
+  int flag = 0;
 
   while (!dll_empty(stack)) {
     Dllist node = dll_last(stack);
@@ -314,25 +314,40 @@ int is_cyclic_util(graph g, int start) {
 
     if (!visited[u]) {
       visited[u] = 1;
+      if (!flag && (u == start))
+        visited[u] = 0;
     }
 
-    if (u == start) {
+    if ((u == start) && (visited[start] == 1)) {
       free(visited);
       free_dllist(stack);
       return 1;
     }
 
+    flag++;
+
     JRB u_node = jrb_find_int(g.vertices, u);
     if (u_node == NULL)
       continue;
 
-    JRB vertex_connect_to_u_tree = (JRB)(jval_v(u_node->val));
+    int *out_degree_u_list = malloc((max_id + 1) * sizeof(int));
+    int out_degree_u;
+    if(out_degree_u_list == NULL){
+      fprintf(stderr, "%s %s:%d\n", "malloc failed in", __FILE__, __LINE__);
+      exit(1);
+    }    
 
+    if ((out_degree_u = out_degree(g, u, out_degree_u_list)) == 0)
+      continue;
 
-    jrb_rtraverse(tmp, vertex_connect_to_u_tree) {
-      if (!visited[tmp->key.i])
-        dll_append(stack, new_jval_i(tmp->key.i));
+    int i;
+    for(i = 0; i < out_degree_u; i++){
+      int _v = out_degree_u_list[i];
+      if (!visited[_v])
+        dll_append(stack, new_jval_i(_v));
     }
+
+    free(out_degree_u_list);
   }
 
 end:
