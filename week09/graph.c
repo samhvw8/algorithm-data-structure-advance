@@ -288,7 +288,7 @@ int get_graph_min_id(graph g) {
 int is_cyclic_util(graph g, int start) {
   if (g.edges == NULL || g.vertices == NULL)
     return 0;
-  JRB tmp;
+
   int max_id = get_graph_max_id(g);
 
   int *visited = (int*)malloc((max_id + 1) * sizeof(int));
@@ -315,7 +315,7 @@ int is_cyclic_util(graph g, int start) {
   dll_append(stack, new_jval_i(start));
   //
 
-
+  int flag = 0;
 
   while (!dll_empty(stack)) {
     Dllist node = dll_last(stack);
@@ -324,25 +324,40 @@ int is_cyclic_util(graph g, int start) {
 
     if (!visited[u]) {
       visited[u] = 1;
+      if (!flag && (u == start))
+        visited[u] = 0;
     }
 
-    if (u == start) {
+    if ((u == start) && (visited[start] == 1)) {
       free(visited);
       free_dllist(stack);
       return 1;
     }
 
+    flag++;
+
     JRB u_node = jrb_find_int(g.vertices, u);
     if (u_node == NULL)
       continue;
 
-    JRB vertex_connect_to_u_tree = (JRB)(jval_v(u_node->val));
+    int *out_degree_u_list = malloc((max_id + 1) * sizeof(int));
+    int out_degree_u;
+    if(out_degree_u_list == NULL){
+      fprintf(stderr, "%s %s:%d\n", "malloc failed in", __FILE__, __LINE__);
+      exit(1);
+    }    
 
+    if ((out_degree_u = out_degree(g, u, out_degree_u_list)) == 0)
+      continue;
 
-    jrb_rtraverse(tmp, vertex_connect_to_u_tree) {
-      if (!visited[tmp->key.i])
-        dll_append(stack, new_jval_i(tmp->key.i));
+    int i;
+    for(i = 0; i < out_degree_u; i++){
+      int _v = out_degree_u_list[i];
+      if (!visited[_v])
+        dll_append(stack, new_jval_i(_v));
     }
+
+    free(out_degree_u_list);
   }
 
 end:
@@ -445,6 +460,9 @@ double shortest_path(graph graph, int s, int t, int* path, double* length) {
     return INFINITY;
 
   int i, max_id = get_graph_max_id(graph);
+  if (t > max_id || s > max_id)
+    return INFINITY;
+
   double *dist = malloc(sizeof(double) * (max_id + 1));  // free ?
   int *prev = malloc(sizeof(int) * (max_id + 1));
   if (!dist || !prev) {
@@ -453,13 +471,16 @@ double shortest_path(graph graph, int s, int t, int* path, double* length) {
   }
 
   Dllist queue = new_dllist();   // free ?
+  int min_id = get_graph_min_id(graph);
 
-  for (i = 0; i <= max_id ; ++i) {
-    if (i != s) {
-      dist[i] = INFINITY;
-      prev[i] = UNDEFINED;
+  JRB node;
+  jrb_traverse(node, graph.vertices) {
+    int u = jval_i(node->key);
+    if (u != s) {
+      dist[u] = INFINITY;
+      prev[u] = UNDEFINED;
     }
-    dll_append(queue, new_jval_i(i));
+    dll_append(queue, new_jval_i(u));
   }
 
   dist[s] = 0;
@@ -494,7 +515,7 @@ double shortest_path(graph graph, int s, int t, int* path, double* length) {
     int i;
     for (i = 0; i < out_degree_u; i++) {
       int v = out_degree_u_list[i];
-      int alt = dist[u] + get_edge_val(graph, u, v);
+      double alt = dist[u] + get_edge_val(graph, u, v);
       if (alt < dist[v]) {
         dist[v] = alt;
         prev[v] = u;
@@ -506,7 +527,7 @@ double shortest_path(graph graph, int s, int t, int* path, double* length) {
 
   }
 
-  for (i = 0; i <= max_id + 1; i++) {
+  for (i = min_id; i <= max_id; i++) {
     length[i] = dist[i];
   }
 
@@ -515,16 +536,16 @@ double shortest_path(graph graph, int s, int t, int* path, double* length) {
     path[0] = t;
     while (1) {
       path[j] = prev[path[j - 1]];
-      if (path[j] == s)
+      if (path[j] == s || path[j] == -1)
         break;
       j++;
     }
     path[++j] = -1;
   }
-
+  double ret = dist[t];
   //
   free_dllist(queue);
   free(dist);
   free(prev);
-  return dist[t];
+  return ret;
 }
